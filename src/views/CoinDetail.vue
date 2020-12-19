@@ -79,7 +79,7 @@
         :colors="['orange']"
         :min="min"
         :max="max"
-        :data="history.map(h => [h.date, parseFloat(h.priceUsd).toFixed(2)])"
+        :data="history.map((h) => [h.date, parseFloat(h.priceUsd).toFixed(2)])"
       />
 
       <h3 class="text-xl my-10">Best excahnge offers</h3>
@@ -128,7 +128,7 @@ export default {
       history: [],
       markets: [],
       fromUsd: true,
-      convertValue: null
+      convertValue: null,
     };
   },
 
@@ -147,27 +147,27 @@ export default {
 
     min() {
       return Math.min(
-        ...this.history.map(h => parseFloat(h.priceUsd).toFixed(2))
+        ...this.history.map((h) => parseFloat(h.priceUsd).toFixed(2))
       );
     },
 
     max() {
       return Math.max(
-        ...this.history.map(h => parseFloat(h.priceUsd).toFixed(2))
+        ...this.history.map((h) => parseFloat(h.priceUsd).toFixed(2))
       );
     },
 
     avg() {
       return Math.abs(
-        ...this.history.map(h => parseFloat(h.priceUsd).toFixed(2))
+        ...this.history.map((h) => parseFloat(h.priceUsd).toFixed(2))
       );
-    }
+    },
   },
 
   watch: {
     $route() {
       this.getCoin();
-    }
+    },
   },
 
   created() {
@@ -184,7 +184,7 @@ export default {
 
       return api
         .getExchange(exchange.exchangeId)
-        .then(res => {
+        .then((res) => {
           this.$set(exchange, "url", res.exchangeUrl);
         })
         .finally(() => {
@@ -199,7 +199,7 @@ export default {
       Promise.all([
         api.getAsset(id),
         api.getAssetHistory(id),
-        api.getMarkets(id)
+        api.getMarkets(id),
       ])
         .then(([asset, history, markets]) => {
           this.asset = asset;
@@ -207,8 +207,8 @@ export default {
           this.markets = markets;
         })
         .finally(() => (this.isLoading = false));
-    }
-  }
+    },
+  },
 };
 </script>
 
