@@ -82,7 +82,7 @@
         :data="history.map((h) => [h.date, parseFloat(h.priceUsd).toFixed(2)])"
       />
 
-      <h3 class="text-xl my-10">Best excahnge offers</h3>
+      <h3 class="text-xl my-10">Best exchange offers</h3>
       <table>
         <tr
           v-for="m in markets"
